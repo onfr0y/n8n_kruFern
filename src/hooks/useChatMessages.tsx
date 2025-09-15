@@ -264,20 +264,48 @@ export const useChatMessages = (notebookId?: string) => {
     }) => {
       if (!user) throw new Error('User not authenticated');
 
-      // Call the n8n webhook
-      const webhookResponse = await supabase.functions.invoke('send-chat-message', {
-        body: {
-          session_id: messageData.notebookId,
-          message: messageData.content,
-          user_id: user.id
-        }
-      });
+      // Add 30 second delay
+      await new Promise(resolve => setTimeout(resolve, 30000));
+      
+      // Create the fixed SIIT response
+      const fixedResponse = {
+        type: 'ai',
+        content: "SIIT's 2025 admission criteria detail requirements for its Engineering, Information Technology, and Management Technology programs. Applicants must possess a high school diploma or equivalent, with specific subject prerequisites (Math/Science for Eng/IT, Math for MGT). Mandatory English proficiency is required, proven by tests like TOEFL, IELTS, or SAT EBRW, with specified minimum scores. Academic achievement is assessed through standardized tests (SAT, ACT, A-Level, IB, etc.) or equivalent qualifications. The admission process also includes an interview.",
+        additional_kwargs: {},
+        response_metadata: {},
+        tool_calls: [],
+        invalid_tool_calls: []
+      };
 
-      if (webhookResponse.error) {
-        throw new Error(`Webhook error: ${webhookResponse.error.message}`);
+      // Store the user message first
+      const { error: userMessageError } = await supabase
+        .from('n8n_chat_histories')
+        .insert({
+          session_id: messageData.notebookId,
+          message: {
+            type: 'human',
+            content: messageData.content
+          }
+        });
+
+      if (userMessageError) {
+        console.error('Error storing user message:', userMessageError);
       }
 
-      return webhookResponse.data;
+      // Store the AI response
+      const { error: aiMessageError } = await supabase
+        .from('n8n_chat_histories')
+        .insert({
+          session_id: messageData.notebookId,
+          message: fixedResponse
+        });
+
+      if (aiMessageError) {
+        console.error('Error storing AI message:', aiMessageError);
+        throw aiMessageError;
+      }
+
+      return { success: true };
     },
     onSuccess: () => {
       // The response will appear via Realtime, so we don't need to do anything here
