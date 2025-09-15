@@ -195,10 +195,10 @@ const SourceContentViewer = ({
   };
 
   return (
-    <div className={`flex flex-col h-full overflow-hidden ${className}`}>
+    <div className="w-full bg-black/20 border-r border-white/20 flex flex-col h-full overflow-hidden glass">
       {/* Header */}
       <div className="p-4 border-b border-white/20 flex-shrink-0 glass">
-        <div className="flex items-center space-x-2 mb-2">
+        <div className="p-4 border-b border-white/20 flex-shrink-0">
           <div className="w-6 h-6 glass rounded border border-white/30 flex items-center justify-center flex-shrink-0 overflow-hidden">
             {getSourceIcon(citation.source_type)}
           </div>
@@ -252,7 +252,7 @@ const SourceContentViewer = ({
       )}
 
       {/* Content */}
-      <ScrollArea className="flex-1 h-full" ref={scrollAreaViewportRef}>
+      <ScrollArea className="flex-1 h-full bg-black/10" ref={scrollAreaViewportRef}>
         <div className="p-4">
           <div className="prose prose-gray max-w-none space-y-1">
             {renderHighlightedContent()}

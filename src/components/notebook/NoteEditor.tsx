@@ -161,9 +161,9 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
 
   // Edit mode (only for user notes or new notes)
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full glass">
       {/* Header */}
-      <div className="p-4 border-b border-white/20 flex-shrink-0 glass">
+      <div className="p-4 border-b border-white/20 flex-shrink-0">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-medium text-white drop-shadow">
             {note ? 'Edit Note' : 'New Note'}
@@ -196,7 +196,7 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
       </div>
 
       {/* Content */}
-      <div className="flex-1 p-4 overflow-hidden">
+      <div className="flex-1 p-4 overflow-hidden bg-black/10">
         <Textarea
           placeholder="Write your note here..."
           value={content}
@@ -206,7 +206,7 @@ const NoteEditor = ({ note, onSave, onDelete, onCancel, isLoading, onCitationCli
       </div>
 
       {/* Footer */}
-      <div className="p-4 border-t border-white/20 flex-shrink-0 glass">
+      <div className="p-4 border-t border-white/20 flex-shrink-0">
         <div className="flex justify-between">
           <div>
             {note && onDelete && !isAIResponse && (

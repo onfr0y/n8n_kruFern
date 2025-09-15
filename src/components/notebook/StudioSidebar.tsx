@@ -210,12 +210,12 @@ const StudioSidebar = ({
   };
 
   if (isEditingMode) {
-    return <div className="w-full bg-gray-50 border-l border-gray-200 flex flex-col h-full overflow-hidden">
+    return <div className="w-full bg-black/20 border-l border-white/20 flex flex-col h-full overflow-hidden">
         <NoteEditor note={editingNote || undefined} onSave={handleSaveNote} onDelete={editingNote ? handleDeleteNote : undefined} onCancel={handleCancel} isLoading={isCreating || isUpdating || isDeleting} onCitationClick={onCitationClick} />
       </div>;
   }
 
-  return <div className="w-full bg-gray-50 border-l border-gray-200 flex flex-col h-full overflow-hidden">
+  return <div className="w-full bg-black/20 border-l border-white/20 flex flex-col h-full overflow-hidden">
     <div className="w-full glass border-l border-white/20 flex flex-col h-full overflow-hidden">
       <div className="p-4 border-b border-white/20 flex-shrink-0">
         <h2 className="text-lg font-medium text-white mb-4 drop-shadow">Studio</h2>

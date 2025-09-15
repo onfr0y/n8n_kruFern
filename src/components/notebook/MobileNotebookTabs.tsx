@@ -79,10 +79,12 @@ const MobileNotebookTabs = ({
       </TabsContent>
 
       <TabsContent value="studio" className="flex-1 overflow-hidden mt-0">
-        <StudioSidebar 
+        <div className="bg-black/20">
+          <StudioSidebar 
           notebookId={notebookId}
           onCitationClick={onCitationClick}
-        />
+          />
+        </div>
       </TabsContent>
     </Tabs>
   );
