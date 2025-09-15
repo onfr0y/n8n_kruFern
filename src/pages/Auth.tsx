@@ -8,7 +8,7 @@ const Auth = () => {
           <div className="flex justify-center mb-4">
             <Logo size="lg" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">InsightsLM</h1>
+          <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">fasterthanturbolearn</h1>
           <p className="text-white/80 drop-shadow">Your AI-powered knowledge companion</p>
         </div>
         <AuthForm />

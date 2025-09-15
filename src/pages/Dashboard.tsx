@@ -99,7 +99,7 @@ const Dashboard = () => {
       
       <main className="max-w-7xl mx-auto px-6 py-[60px]">
         <div className="mb-8 glass-card rounded-2xl p-8">
-          <h1 className="font-medium text-white mb-2 text-5xl drop-shadow-lg">Welcome to InsightsLM</h1>
+          <h1 className="font-medium text-white mb-2 text-5xl drop-shadow-lg">Welcome to fasterthanturbolearn</h1>
         </div>
 
         {hasNotebooks ? <NotebookGrid /> : <EmptyDashboard />}

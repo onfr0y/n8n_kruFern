@@ -412,6 +412,7 @@ const AddSourcesDialog = ({
                   </svg>
                 </div>
                 <DialogTitle className="text-xl font-medium text-white drop-shadow">InsightsLM</DialogTitle>
+                <DialogTitle className="text-xl font-medium text-white drop-shadow">fasterthanturbolearn</DialogTitle>
               </div>
             </div>
           </DialogHeader>
@@ -419,7 +420,7 @@ const AddSourcesDialog = ({
           <div className="space-y-6">
             <div>
               <h2 className="text-xl font-medium mb-2 text-white drop-shadow">Add sources</h2>
-              <p className="text-white/80 text-sm mb-1">Sources let InsightsLM base its responses on the information that matters most to you.</p>
+              <p className="text-white/80 text-sm mb-1">Sources let fasterthanturbolearn base its responses on the information that matters most to you.</p>
               <p className="text-white/70 text-xs">
                 (Examples: marketing plans, course reading, research notes, meeting transcripts, sales documents, etc.)
               </p>

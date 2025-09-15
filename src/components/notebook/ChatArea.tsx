@@ -317,7 +317,7 @@ const ChatArea = ({
       
       {/* Footer */}
       <div className="p-4 border-t border-white/20 flex-shrink-0 glass">
-        <p className="text-center text-sm text-white/70">InsightsLM can be inaccurate; please double-check its responses.</p>
+        <p className="text-center text-sm text-white/70">fasterthanturbolearn can be inaccurate; please double-check its responses.</p>
       </div>
       
       {/* Add Sources Dialog */}
