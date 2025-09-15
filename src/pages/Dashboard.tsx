@@ -94,12 +94,12 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <DashboardHeader userEmail={user?.email} />
       
       <main className="max-w-7xl mx-auto px-6 py-[60px]">
-        <div className="mb-8">
-          <h1 className="font-medium text-gray-900 mb-2 text-5xl">Welcome to InsightsLM</h1>
+        <div className="mb-8 glass-card rounded-2xl p-8">
+          <h1 className="font-medium text-white mb-2 text-5xl drop-shadow-lg">Welcome to InsightsLM</h1>
         </div>
 
         {hasNotebooks ? <NotebookGrid /> : <EmptyDashboard />}

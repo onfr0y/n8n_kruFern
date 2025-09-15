@@ -308,16 +308,16 @@ const AudioPlayer = ({
   };
 
   return (
-    <Card className="p-4 space-y-4">
+    <Card className="p-4 space-y-4 glass-card">
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
       
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <h4 className="font-medium text-gray-900">{title}</h4>
+          <h4 className="font-medium text-white drop-shadow">{title}</h4>
         </div>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="sm" disabled={isDeleting}>
+          <DropdownMenuTrigger asChild> 
+            <Button variant="ghost" size="sm" disabled={isDeleting} className="glass-button text-white border-white/30">
               {isDeleting ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
@@ -325,7 +325,7 @@ const AudioPlayer = ({
               )}
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="glass-strong border-white/30">
             <DropdownMenuItem onClick={downloadAudio} disabled={isDownloading}>
               {isDownloading ? (
                 <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -348,26 +348,26 @@ const AudioPlayer = ({
 
       {/* Auto-refresh indicator */}
       {autoRetryInProgress && (
-        <div className="flex items-center justify-between p-3 bg-blue-50 rounded-md border border-blue-200">
+        <div className="flex items-center justify-between p-3 glass rounded-md border border-white/30">
           <div className="flex items-center space-x-2">
-            <Loader2 className="h-4 w-4 text-blue-600 animate-spin" />
-            <span className="text-sm text-blue-600">Refreshing audio access...</span>
+            <Loader2 className="h-4 w-4 text-white animate-spin" />
+            <span className="text-sm text-white">Refreshing audio access...</span>
           </div>
         </div>
       )}
 
       {/* Error State */}
       {audioError && !autoRetryInProgress && (
-        <div className="flex items-center justify-between p-3 bg-red-50 rounded-md border border-red-200">
+        <div className="flex items-center justify-between p-3 glass-dark rounded-md border border-red-400/50">
           <div className="flex items-center space-x-2">
-            <AlertTriangle className="h-4 w-4 text-red-600" />
-            <span className="text-sm text-red-600">{audioError}</span>
+            <AlertTriangle className="h-4 w-4 text-red-400" />
+            <span className="text-sm text-red-400">{audioError}</span>
           </div>
           <Button
             variant="outline"
             size="sm"
             onClick={onRetry || retryLoad}
-            className="text-red-600 border-red-300 hover:bg-red-50"
+            className="text-red-400 border-red-400/50 hover:bg-red-500/20 glass-button"
           >
             <RefreshCw className="h-4 w-4 mr-1" />
             Retry
@@ -395,20 +395,21 @@ const AudioPlayer = ({
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Button
-            variant="ghost"
-            size="sm"
+            variant="ghost" 
+            size="sm" 
             onClick={restart}
             disabled={loading || !!audioError}
+            className="glass-button text-white border-white/30"
           >
             <RotateCcw className="h-4 w-4" />
           </Button>
           
           <Button
-            variant="default"
-            size="sm"
+            variant="default" 
+            size="sm" 
             onClick={togglePlayPause}
             disabled={loading || !!audioError}
-            className="w-12"
+            className="w-12 glass-strong text-white border-white/30"
           >
             {loading ? (
               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
@@ -422,7 +423,7 @@ const AudioPlayer = ({
 
         {/* Volume Control */}
         <div className="flex items-center space-x-2 w-24">
-          <Volume2 className="h-4 w-4 text-gray-500" />
+          <Volume2 className="h-4 w-4 text-white/70" />
           <Slider
             value={[volume]}
             max={1}

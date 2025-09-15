@@ -70,17 +70,17 @@ const AuthForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto glass-strong rounded-2xl border-white/30">
       <CardHeader>
-        <CardTitle>Sign In</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-white drop-shadow-lg">Sign In</CardTitle>
+        <CardDescription className="text-white/80">
           Enter your credentials to access your notebooks
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-white font-medium">Email</Label>
             <Input
               id="email"
               type="email"
@@ -88,10 +88,11 @@ const AuthForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="Enter your email"
+              className="glass-input text-white placeholder:text-white/60 border-white/30 focus:border-white/50"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-white font-medium">Password</Label>
             <Input
               id="password"
               type="password"
@@ -100,9 +101,10 @@ const AuthForm = () => {
               required
               placeholder="Enter your password"
               minLength={6}
+              className="glass-input text-white placeholder:text-white/60 border-white/30 focus:border-white/50"
             />
           </div>
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full glass-button text-white font-medium hover:text-white" disabled={loading}>
             {loading ? 'Signing In...' : 'Sign In'}
           </Button>
         </form>

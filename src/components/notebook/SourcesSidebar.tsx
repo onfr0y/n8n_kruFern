@@ -226,14 +226,14 @@ const SourcesSidebar = ({
   }
 
   return (
-    <div className="w-full bg-gray-50 border-r border-gray-200 flex flex-col h-full overflow-hidden">
-      <div className="p-4 border-b border-gray-200 flex-shrink-0">
+    <div className="w-full glass border-r border-white/20 flex flex-col h-full overflow-hidden">
+      <div className="p-4 border-b border-white/20 flex-shrink-0">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-medium text-gray-900">Sources</h2>
+          <h2 className="text-lg font-medium text-white drop-shadow">Sources</h2>
         </div>
         
         <div className="flex space-x-2">
-          <Button variant="outline" size="sm" className="flex-1" onClick={() => setShowAddSourcesDialog(true)}>
+          <Button variant="outline" size="sm" className="flex-1 glass-button text-white border-white/30" onClick={() => setShowAddSourcesDialog(true)}>
             <Plus className="h-4 w-4 mr-2" />
             Add
           </Button>
@@ -244,21 +244,21 @@ const SourcesSidebar = ({
         <div className="p-4">
           {isLoading ? (
             <div className="text-center py-8">
-              <p className="text-sm text-gray-600">Loading sources...</p>
+              <p className="text-sm text-white/80">Loading sources...</p>
             </div>
           ) : sources && sources.length > 0 ? (
             <div className="space-y-4">
               {sources.map((source) => (
                 <ContextMenu key={source.id}>
                   <ContextMenuTrigger>
-                    <Card className="p-3 border border-gray-200 cursor-pointer hover:bg-gray-50" onClick={() => handleSourceClick(source)}>
+                    <Card className="p-3 glass-card cursor-pointer hover:bg-white/20 transition-all duration-300 hover:scale-105" onClick={() => handleSourceClick(source)}>
                       <div className="flex items-start justify-between space-x-3">
                         <div className="flex items-center space-x-2 flex-1 min-w-0">
-                          <div className="w-6 h-6 bg-white rounded border border-gray-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                          <div className="w-6 h-6 glass rounded border border-white/30 flex items-center justify-center flex-shrink-0 overflow-hidden">
                             {renderSourceIcon(source.type)}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <span className="text-sm text-gray-900 truncate block">{source.title}</span>
+                            <span className="text-sm text-white truncate block drop-shadow">{source.title}</span>
                           </div>
                         </div>
                         <div className="flex-shrink-0 py-[4px]">
@@ -267,7 +267,7 @@ const SourcesSidebar = ({
                       </div>
                     </Card>
                   </ContextMenuTrigger>
-                  <ContextMenuContent>
+                  <ContextMenuContent className="glass-strong border-white/30">
                     <ContextMenuItem onClick={() => handleRenameSource(source)}>
                       <Edit className="h-4 w-4 mr-2" />
                       Rename source
@@ -282,11 +282,11 @@ const SourcesSidebar = ({
             </div>
           ) : (
             <div className="text-center py-8">
-              <div className="w-16 h-16 bg-gray-200 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                <span className="text-gray-400 text-2xl">📄</span>
+              <div className="w-16 h-16 glass rounded-lg mx-auto mb-4 flex items-center justify-center">
+                <span className="text-white/60 text-2xl">📄</span>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Saved sources will appear here</h3>
-              <p className="text-sm text-gray-600 mb-4">Click Add source above to add PDFs, text, or audio files.</p>
+              <h3 className="text-lg font-medium text-white mb-2 drop-shadow">Saved sources will appear here</h3>
+              <p className="text-sm text-white/80 mb-4">Click Add source above to add PDFs, text, or audio files.</p>
             </div>
           )}
         </div>

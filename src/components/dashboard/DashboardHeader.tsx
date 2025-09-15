@@ -14,11 +14,11 @@ const DashboardHeader = ({ userEmail }: DashboardHeaderProps) => {
   const { logout } = useLogout();
 
   return (
-    <header className="bg-white px-6 py-4">
+    <header className="glass px-6 py-4 border-b border-white/20">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Logo />
-          <h1 className="text-xl font-medium text-gray-900">InsightsLM</h1>
+          <h1 className="text-xl font-medium text-white drop-shadow">InsightsLM</h1>
         </div>
         
         <div className="flex items-center space-x-4">

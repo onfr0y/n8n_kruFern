@@ -402,33 +402,33 @@ const AddSourcesDialog = ({
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto glass-strong border-white/30">
           <DialogHeader className="pb-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-black rounded flex items-center justify-center">
+                <div className="w-6 h-6 glass-dark rounded flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#FFFFFF">
                     <path d="M480-80q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-200v-80h320v80H320Zm10-120q-69-41-109.5-110T180-580q0-125 87.5-212.5T480-880q125 0 212.5 87.5T780-580q0 81-40.5 150T630-320H330Zm24-80h252q45-32 69.5-79T700-580q0-92-64-156t-156-64q-92 0-156 64t-64 156q0 54 24.5 101t69.5 79Zm126 0Z" />
                   </svg>
                 </div>
-                <DialogTitle className="text-xl font-medium">InsightsLM</DialogTitle>
+                <DialogTitle className="text-xl font-medium text-white drop-shadow">InsightsLM</DialogTitle>
               </div>
             </div>
           </DialogHeader>
 
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-medium mb-2">Add sources</h2>
-              <p className="text-gray-600 text-sm mb-1">Sources let InsightsLM base its responses on the information that matters most to you.</p>
-              <p className="text-gray-500 text-xs">
+              <h2 className="text-xl font-medium mb-2 text-white drop-shadow">Add sources</h2>
+              <p className="text-white/80 text-sm mb-1">Sources let InsightsLM base its responses on the information that matters most to you.</p>
+              <p className="text-white/70 text-xs">
                 (Examples: marketing plans, course reading, research notes, meeting transcripts, sales documents, etc.)
               </p>
             </div>
 
             {/* File Upload Area */}
             <div 
-              className={`border-2 border-dashed rounded-lg p-12 text-center transition-colors ${
-                dragActive ? 'border-blue-400 bg-blue-50' : 'border-gray-300 hover:border-gray-400'
+              className={`border-2 border-dashed rounded-lg p-12 text-center transition-colors glass-card ${
+                dragActive ? 'border-white/60 bg-white/20' : 'border-white/30 hover:border-white/50'
               } ${isProcessingFiles ? 'opacity-50 pointer-events-none' : ''}`}
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
@@ -436,21 +436,21 @@ const AddSourcesDialog = ({
               onDrop={handleDrop}
             >
               <div className="flex flex-col items-center space-y-4">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-slate-100">
-                  <Upload className="h-6 w-6 text-slate-600" />
+                <div className="w-12 h-12 rounded-full flex items-center justify-center glass">
+                  <Upload className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900 mb-2">
+                  <h3 className="font-medium text-white mb-2 drop-shadow">
                     {isProcessingFiles ? 'Processing files...' : 'Upload sources'}
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-white/80 text-sm">
                     {isProcessingFiles ? (
                       'Please wait while we process your files'
                     ) : (
                       <>
                         Drag & drop or{' '}
                         <button 
-                          className="text-blue-600 hover:underline" 
+                          className="text-white hover:underline font-medium" 
                           onClick={() => document.getElementById('file-upload')?.click()}
                           disabled={isProcessingFiles}
                         >
@@ -461,7 +461,7 @@ const AddSourcesDialog = ({
                     )}
                   </p>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-white/70">
                   Supported file types: PDF, txt, Markdown, Audio (e.g. mp3)
                 </p>
                 <input
@@ -479,25 +479,25 @@ const AddSourcesDialog = ({
             {/* Integration Options */}
             <div className="grid grid-cols-2 gap-4">
               <Button
-                variant="outline"
-                className="h-auto p-4 flex flex-col items-center space-y-2"
+                variant="outline" 
+                className="h-auto p-4 flex flex-col items-center space-y-2 glass-button text-white border-white/30"
                 onClick={() => setShowMultipleWebsiteDialog(true)}
                 disabled={isProcessingFiles}
               >
-                <Link className="h-6 w-6 text-green-600" />
+                <Link className="h-6 w-6 text-white" />
                 <span className="font-medium">Link - Website</span>
-                <span className="text-sm text-gray-500">Multiple URLs at once</span>
+                <span className="text-sm text-white/70">Multiple URLs at once</span>
               </Button>
 
               <Button
-                variant="outline"
-                className="h-auto p-4 flex flex-col items-center space-y-2"
+                variant="outline" 
+                className="h-auto p-4 flex flex-col items-center space-y-2 glass-button text-white border-white/30"
                 onClick={() => setShowCopiedTextDialog(true)}
                 disabled={isProcessingFiles}
               >
-                <Copy className="h-6 w-6 text-purple-600" />
+                <Copy className="h-6 w-6 text-white" />
                 <span className="font-medium">Paste Text - Copied Text</span>
-                <span className="text-sm text-gray-500">Add copied content</span>
+                <span className="text-sm text-white/70">Add copied content</span>
               </Button>
             </div>
           </div>
