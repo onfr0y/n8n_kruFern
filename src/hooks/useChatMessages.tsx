@@ -265,12 +265,12 @@ export const useChatMessages = (notebookId?: string) => {
       if (!user) throw new Error('User not authenticated');
 
       // Add 30 second delay
-      await new Promise(resolve => setTimeout(resolve, 30000));
+      await new Promise(resolve => setTimeout(resolve, 15000));
       
       // Create the fixed SIIT response
       const fixedResponse = {
         type: 'ai',
-        content: "SIIT's 2025 admission criteria detail requirements for its Engineering, Information Technology, and Management Technology programs. Applicants must possess a high school diploma or equivalent, with specific subject prerequisites (Math/Science for Eng/IT, Math for MGT). Mandatory English proficiency is required, proven by tests like TOEFL, IELTS, or SAT EBRW, with specified minimum scores. Academic achievement is assessed through standardized tests (SAT, ACT, A-Level, IB, etc.) or equivalent qualifications. The admission process also includes an interview.",
+        content: "สรุปผลการวิจัยที่สำคัญ\nงานวิจัยนี้ได้ผลลัพธ์ที่สำคัญดังนี้:\n\nความมั่นใจที่เพิ่มขึ้น: คะแนนเฉลี่ยความมั่นใจของกลุ่มตัวอย่างหลังการใช้งานเว็บไซต์ (ค่าเฉลี่ย = 4.31) สูงกว่าก่อนการใช้งาน (ค่าเฉลี่ย = 3.91) อย่างมีนัยสำคัญทางสถิติที่ระดับ .05\n\nความพึงพอใจของผู้ใช้: ความพึงพอใจโดยรวมของผู้ใช้ที่มีต่อเว็บไซต์อยู่ในระดับ \"มากที่สุด\" ด้วยคะแนนเฉลี่ย 4.49 โดยผู้ใช้พึงพอใจด้านการออกแบบส่วนต่อประสานผู้ใช้มากที่สุด\n\nเว็บไซต์เป็นนวัตกรรมที่มีประสิทธิภาพ: ผลสรุปได้ว่าเว็บไซต์ที่พัฒนาขึ้นเป็นนวัตกรรมที่มีประสิทธิภาพในการส่งเสริมความมั่นใจในการแต่งกายของวัยรุ่นไทย โดยเป็นพื้นที่ปลอดภัยในการแสดงออกและได้รับการยอมรับทางสังคม",
         additional_kwargs: {},
         response_metadata: {},
         tool_calls: [],
