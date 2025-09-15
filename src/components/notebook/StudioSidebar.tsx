@@ -275,7 +275,7 @@ const StudioSidebar = ({
                   {isGenerating || currentStatus === 'generating' ? <>
                       <Loader2 className="h-4 w-4 mr-2 animate-spin" />
                       Generating...
-                    </> : 'Generate'}
+                    </> : hasProcessedSource ? 'Generate' : 'Upload sources to generate'}
                 </Button>
               </div>
             </Card>}

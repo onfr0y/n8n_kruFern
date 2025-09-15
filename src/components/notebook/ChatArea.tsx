@@ -57,8 +57,8 @@ const ChatArea = ({
   // Check if at least one source has been successfully processed
   const hasProcessedSource = sources?.some(source => source.processing_status === 'completed') || false;
 
-  // Chat should be disabled if there are no processed sources
-  const isChatDisabled = !hasProcessedSource;
+  // Chat is always enabled now - can work with or without sources
+  const isChatDisabled = false;
 
   // Track when we send a message to show loading state
   const [lastMessageCount, setLastMessageCount] = useState(0);
@@ -157,12 +157,10 @@ const ChatArea = ({
 
   // Update placeholder text based on processing status
   const getPlaceholderText = () => {
-    if (isChatDisabled) {
-      if (sourceCount === 0) {
-        return "Upload a source to get started...";
-      } else {
-        return "Please wait while your sources are being processed...";
-      }
+    if (sourceCount === 0) {
+      return "Ask me anything or upload sources for document-specific chat...";
+    } else if (!hasProcessedSource) {
+      return "Ask me anything while your sources are being processed...";
     }
     return "Start typing...";
   };
@@ -258,7 +256,7 @@ const ChatArea = ({
               </div>
               
               {/* Example Questions Carousel */}
-              {!isChatDisabled && !pendingUserMessage && !showAiLoading && exampleQuestions.length > 0 && <div className="mt-4">
+              {!pendingUserMessage && !showAiLoading && exampleQuestions.length > 0 && <div className="mt-4">
                   <Carousel className="w-full max-w-4xl">
                     <CarouselContent className="-ml-2 md:-ml-4">
                       {exampleQuestions.map((question, index) => <CarouselItem key={index} className="pl-2 md:pl-4 basis-auto">
@@ -280,24 +278,38 @@ const ChatArea = ({
     <div className="flex-1 flex flex-col items-center justify-center p-8 overflow-hidden">
           <div className="text-center mb-8">
             <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center glass">
-              <Upload className="h-8 w-8 text-white" />
+              <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#FFFFFF">
+                <path d="M480-80q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-200v-80h320v80H320Zm10-120q-69-41-109.5-110T180-580q0-125 87.5-212.5T480-880q125 0 212.5 87.5T780-580q0 81-40.5 150T630-320H330Zm24-80h252q45-32 69.5-79T700-580q0-92-64-156t-156-64q-92 0-156 64t-64 156q0 54 24.5 101t69.5 79Zm126 0Z" />
+              </svg>
             </div>
-            <h2 className="text-xl font-medium text-white mb-4 drop-shadow-lg">Add a source to get started</h2>
+            <h2 className="text-xl font-medium text-white mb-4 drop-shadow-lg">Start chatting with AI</h2>
+            <p className="text-white/80 mb-4">You can chat directly with AI or upload sources for document-specific conversations</p>
             <Button onClick={() => setShowAddSourcesDialog(true)} className="glass-button text-white border-white/30">
               <Upload className="h-4 w-4 mr-2" />
-              Upload a source
+              Upload sources (optional)
             </Button>
           </div>
 
           {/* Bottom Input */}
           <div className="w-full max-w-2xl">
             <div className="flex space-x-4">
-              <Input placeholder="Upload a source to get started" disabled className="flex-1 glass-input text-white placeholder:text-white/60 border-white/30" />
+              <Input 
+                placeholder={getPlaceholderText()}
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && !isSending && !pendingUserMessage && handleSendMessage()}
+                className="flex-1 glass-input text-white placeholder:text-white/60 border-white/30" 
+                disabled={isSending || !!pendingUserMessage}
+              />
               <div className="flex items-center text-sm text-white/70">
                 0 sources
               </div>
-              <Button disabled className="glass-button text-white border-white/30">
-                <Send className="h-4 w-4" />
+              <Button 
+                onClick={() => handleSendMessage()} 
+                disabled={!message.trim() || isSending || !!pendingUserMessage} 
+                className="glass-button text-white border-white/30"
+              >
+                {isSending || pendingUserMessage ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
               </Button>
             </div>
           </div>
